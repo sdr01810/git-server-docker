@@ -26,10 +26,11 @@ WORKDIR /git-server/
 # It does all the heavy lifting when it comes to
 # providing remote git service. For further info:
 # https://git-scm.com/docs/git-shell
-RUN mkdir /git-server/keys \
-  && adduser -D -s /usr/bin/git-shell git \
+RUN adduser -D -s /usr/bin/git-shell git \
   && echo git:12345 | chpasswd \
-  && mkdir /home/git/.ssh
+  && mkdir /home/git/.ssh \
+  && mkdir /git-server/keys \
+  && mkdir /git-server/repos
 
 # Custom commands honored by git-shell can be placed
 # in the directory 'git-shell-commands'.
