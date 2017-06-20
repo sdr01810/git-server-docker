@@ -1,13 +1,13 @@
-FROM alpine:3.4
+FROM alpine:3.6
 
 MAINTAINER Carlos Bernárdez "carlos@z4studios.com"
 
 # "--no-cache" is new in Alpine 3.3 and it avoids the need for
 # "--update + rm -rf /var/cache/apk/*" (to remove the cache)
 RUN apk add --no-cache \
-# openssh=7.2_p2-r1
+# openssh=7.5_p1-r1
   openssh \
-# git=2.8.3-r0
+# git=2.13.0-r0
   git
 
 # Generate the server's public/private key pair.
