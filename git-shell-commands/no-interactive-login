@@ -1,5 +1,6 @@
 #!/bin/sh
 printf '%s\n' "Welcome to git-server-docker!"
-printf '%s\n' "You've successfully authenticated, but I do not"
-printf '%s\n' "provide interactive shell access."
+printf '%s\n' ""
+printf '%s\n' "You've authenticated successfully, but this"
+printf '%s\n' "git server does not provide interactive shell access."
 exit 128

@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# If there is some public key in keys folder
-# then it copies its contain in authorized_keys file
+# Copy all public keys (if any) to the authorized_keys file.
 if [ "$(ls -A /git-server/keys/)" ]; then
   cd /home/git
   cat /git-server/keys/*.pub > .ssh/authorized_keys
@@ -10,7 +9,7 @@ if [ "$(ls -A /git-server/keys/)" ]; then
   chmod -R 600 .ssh/*
 fi
 
-# Checking permissions and fixing SGID bit in repos folder
+# Check permissions and fix-up the SGID bit in the repos folder.
 # More info: https://github.com/jkarlosb/git-server-docker/issues/1
 if [ "$(ls -A /git-server/repos/)" ]; then
   cd /git-server/repos
@@ -19,5 +18,5 @@ if [ "$(ls -A /git-server/repos/)" ]; then
   find . -type d -exec chmod g+s '{}' +
 fi
 
-# -D flag avoids executing sshd as a daemon
-/usr/sbin/sshd -D
+# Start the ssh server
+/usr/sbin/sshd -D # run in the foreground, *not* as a daemon
