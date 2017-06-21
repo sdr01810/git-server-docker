@@ -2,11 +2,7 @@
 
 # Copy all public keys (if any) to the authorized_keys file.
 if [ "$(ls -A /git-server/keys/)" ]; then
-  cd /home/git
-  cat /git-server/keys/*.pub > .ssh/authorized_keys
-  chown -R git:git .ssh
-  chmod 700 .ssh
-  chmod -R 600 .ssh/*
+  cat /git-server/keys/*.pub > /home/git/.ssh/authorized_keys
 fi
 
 # Check permissions and fix-up the SGID bit in the repos folder.

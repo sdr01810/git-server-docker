@@ -25,7 +25,6 @@ WORKDIR /git-server
 # https://git-scm.com/docs/git-shell
 RUN adduser -D -s /usr/bin/git-shell git \
   && echo git:12345 | chpasswd \
-  && mkdir /home/git/.ssh \
   && mkdir /git-server/keys \
   && mkdir /git-server/repos
 
@@ -35,6 +34,13 @@ COPY git-shell-commands /home/git/git-shell-commands
 
 # Uncomment the following line to allow (restricted) interactive login as git:
 #RUN rm /home/git/git-shell-commands/no-interactive-login
+
+# Initialize git home directory.
+RUN cd /home/git && mkdir -p .ssh && \
+	cp /dev/null .ssh/authorized_keys && \
+	chmod -R 600 .ssh && chmod 700 .ssh && \
+	(chmod +rx git-shell-commands/* || :) && \
+	chown -R git:git .
 
 # The sshd_config file has been edited as follows:
 # 1. enable authorization via public/private key pairs
