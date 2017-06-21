@@ -14,7 +14,7 @@ a 'keys' volume for public keys, and 'repos' volume for git repositories:
 
 How to use a public key:
 
-    Copy the public part of your public/private key pair to the keys folder: 
+	Copy the public part of your public/private key pair to the keys folder: 
 	- From your local host: $ cp ~/.ssh/id_rsa.pub ~/git-server/keys
 	- From a remote host: $ scp ~/.ssh/id_rsa.pub user@host:~/git-server/keys
 	
@@ -53,7 +53,7 @@ How to clone a repo from the git server:
 
 ### Arguments
 
-* **Expose ports**: 22
+* **Exposed ports**: 22
 * **Volumes**:
  * */git-server/keys*: Stores public ssh keys for each user.
  * */git-server/repos*: Stores the git repositories.
