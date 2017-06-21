@@ -15,4 +15,5 @@ if [ "$(ls -A /git-server/repos/)" ]; then
 fi
 
 # Start the ssh server in the foreground, *not* as a daemon
-/usr/sbin/sshd -D || echo 1>&2 "The ssh server has failed unexpectedly; exit code: $?"
+(set -x ; /usr/sbin/sshd -D) ||
+echo 1>&2 "The ssh server has failed unexpectedly; exit code: $?"
