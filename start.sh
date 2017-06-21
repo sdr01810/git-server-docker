@@ -18,5 +18,5 @@ if [ "$(ls -A /git-server/repos/)" ]; then
   find . -type d -exec chmod g+s '{}' +
 fi
 
-# Start the ssh server
-/usr/sbin/sshd -D # run in the foreground, *not* as a daemon
+# Start the ssh server in the foreground, *not* as a daemon
+/usr/sbin/sshd -D || echo 1>&2 "The ssh server has failed unexpectedly; exit code: $?"
