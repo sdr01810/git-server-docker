@@ -13,10 +13,7 @@ RUN apk add --no-cache \
 # Generate the server's public/private key pair.
 RUN ssh-keygen -A
 
-# SSH autorun
-# RUN rc-update add sshd
-
-WORKDIR /git-server/
+WORKDIR /git-server
 
 # Notable adduser flags:
 # -D avoids password generation
@@ -42,9 +39,10 @@ COPY git-shell-commands /home/git/git-shell-commands
 COPY sshd_config /etc/ssh/sshd_config
 
 # The start script handles first-time setup,
-# and launches the ssh server.
+# and launches the SSH server.
 COPY start.sh start.sh
 
+# SSH port:
 EXPOSE 22
 
 CMD ["sh", "start.sh"]
