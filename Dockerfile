@@ -33,6 +33,9 @@ RUN adduser -D -s /usr/bin/git-shell git \
 # in the directory 'git-shell-commands'.
 COPY git-shell-commands /home/git/git-shell-commands
 
+# Uncomment the following line to allow (restricted) interactive login as git:
+#RUN rm /home/git/git-shell-commands/no-interactive-login
+
 # The sshd_config file has been edited as follows:
 # 1. enable authorization via public/private key pairs
 # 2. disable authorization via password

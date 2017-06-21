@@ -1,0 +1,18 @@
+#!/bin/sh
+##
+
+set +e
+
+##
+
+echo "These custom git-shell commands are available:"
+echo
+
+cd "${0%/*}" && ls
+
+echo
+
+##
+
+exit 0
+
