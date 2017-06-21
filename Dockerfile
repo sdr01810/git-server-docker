@@ -45,4 +45,6 @@ COPY start.sh start.sh
 # SSH port:
 EXPOSE 22
 
+VOLUME ["/git-server/keys", "/git-server/repos"]
+
 CMD ["sh", "start.sh"]
